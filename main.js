@@ -133,15 +133,14 @@ const dynamicHour = fullDinamicDate.getHours()
 
 // Dynamic Minutes 
 let mainMinutes;
-let dynamicMinutes = fullDinamicDate.getMinutes();
+const dynamicMinutes = fullDinamicDate.getMinutes();
+const dynamicScound = fullDinamicDate.getSeconds();
 const minuteLength = dynamicMinutes.toString().length;
 
 if (minuteLength <= 2) {
   mainMinutes = dynamicMinutes.toString().padStart(2, '0');
 }
 
-// Dynamic Scound 
-let dynamicScound
 // Increase the scound
 function incrementScound() {
     const scoundElm = document.querySelector('.scounds');
@@ -158,25 +157,21 @@ function incrementScound() {
     }
   
     scoundElm.textContent = currentScound < 10 ? '0' + currentScound : currentScound;
-  }
-
-  function startCounter() {
+}
+  
+function startCounter() {
     const scoundElm = document.querySelector('.scounds');
     const minuteElm = document.querySelector('.minutes');
-    scoundElm.textContent = '00';
+    scoundElm.textContent = dynamicScound < 10 ? '0' + dynamicScound : dynamicScound;
     minuteElm.textContent = mainMinutes;
   
-    setInterval(incrementScound, 1000);
+    setInterval(incrementScound, 997);
   }
+  
+  window.addEventListener('DOMContentLoaded', () => {
+    startCounter();
+  });
 
-window.addEventListener('DOMContentLoaded', () => {
-    startCounter()
-})
-
-// Change the minute
-if(dynamicScound == 59) {
-    mainMinutes++
-}
 
 // Giving Dynamic Data into DOM
 dateElm.textContent = mainDate
@@ -186,4 +181,3 @@ dayElm.textContent = dayName
 hourElm.textContent = dynamicHour
 minutesElm.textContent = mainMinutes
 
-//but scound starts from 0 scound will start from dynamic scound
