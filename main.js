@@ -132,30 +132,40 @@ function sayDayName() {
 const dynamicHour = fullDinamicDate.getHours()
 
 // Dynamic Minutes 
-let mainMinutes
-const dynamicMinutes  = fullDinamicDate.getMinutes()
-const minuteLength = dynamicMinutes.toString().length
-if(minuteLength <= 2) {
-    mainMinutes = dynamicMinutes.toString().padStart(2, '0')
+let mainMinutes;
+let dynamicMinutes = fullDinamicDate.getMinutes();
+const minuteLength = dynamicMinutes.toString().length;
+
+if (minuteLength <= 2) {
+  mainMinutes = dynamicMinutes.toString().padStart(2, '0');
 }
 
 // Dynamic Scound 
-
+let dynamicScound
 // Increase the scound
 function incrementScound() {
     const scoundElm = document.querySelector('.scounds');
+    const minuteElm = document.querySelector('.minutes');
+  
     let currentScound = parseInt(scoundElm.textContent);
+    let currentMinutes = parseInt(minuteElm.textContent);
+  
     currentScound = (currentScound + 1) % 60;
-    scoundElm.textContent = currentScound < 10 ? "0" + currentScound : currentScound;
-}
+  
+    if (currentScound === 0) {
+      currentMinutes++;
+      minuteElm.textContent = currentMinutes < 10 ? '0' + currentMinutes : currentMinutes;
+    }
+  
+    scoundElm.textContent = currentScound < 10 ? '0' + currentScound : currentScound;
+  }
 
   function startCounter() {
-    // Initialize dynamic second
-    const fullDinamicDate = new Date();
-    const dynamicScound = fullDinamicDate.getSeconds();
     const scoundElm = document.querySelector('.scounds');
-    scoundElm.textContent = dynamicScound < 10 ? "0" + dynamicScound : dynamicScound;
-
+    const minuteElm = document.querySelector('.minutes');
+    scoundElm.textContent = '00';
+    minuteElm.textContent = mainMinutes;
+  
     setInterval(incrementScound, 1000);
   }
 
@@ -163,6 +173,10 @@ window.addEventListener('DOMContentLoaded', () => {
     startCounter()
 })
 
+// Change the minute
+if(dynamicScound == 59) {
+    mainMinutes++
+}
 
 // Giving Dynamic Data into DOM
 dateElm.textContent = mainDate
@@ -171,3 +185,5 @@ yearElm.textContent = dynamicYear
 dayElm.textContent = dayName
 hourElm.textContent = dynamicHour
 minutesElm.textContent = mainMinutes
+
+//but scound starts from 0 scound will start from dynamic scound
