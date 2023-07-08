@@ -10,6 +10,9 @@ const yearElm = document.querySelector('.year')
 // Catch the day Element from DOM
 const dayElm = document.querySelector('.day')
 
+// Catch the day Element from DOM
+const hourElm = document.querySelector('.hour')
+
 
 
 // Date Mathod for giving Dinamic Date into DOM
@@ -76,6 +79,9 @@ function sayMonthName() {
 // Dynamic Year
 const dynamicYear = fullDinamicDate.getFullYear()
 
+// Dynamic Hour
+const dynamicHour = fullDinamicDate.getHours()
+
 // Dynamic Day
 let dayName
 const dynamicDay = fullDinamicDate.getDay()
@@ -123,3 +129,4 @@ dateElm.textContent = mainDate
 monthElm.textContent = monthName
 yearElm.textContent = dynamicYear
 dayElm.textContent = dayName
+hourElm.textContent = dynamicHour
