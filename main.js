@@ -4,7 +4,8 @@ const dateElm = document.querySelector('.date')
 // Catch the month Element from DOM
 const monthElm = document.querySelector('.month')
 
-
+// Catch the year Element from DOM
+const yearElm = document.querySelector('.year')
 
 
 // Date Mathod for giving Dinamic Date into DOM
@@ -68,7 +69,8 @@ function sayMonthName() {
     }
 }
 
-
+// Dynamic Year
+const dynamicYear = fullDinamicDate.getFullYear()
 
 //Chek the Date number Single or Double and add a 0
 let mainDate
@@ -80,3 +82,4 @@ if(dateLenght < 2) {
 // Giving Dynamic Data into DOM
 dateElm.textContent = mainDate
 monthElm.textContent = monthName
+yearElm.textContent = dynamicYear
