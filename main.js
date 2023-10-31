@@ -38,7 +38,7 @@ if(dateLenght <= 2) {
 let monthName
 const dynamicMonth = fullDinamicDate.getMonth()
 
-// Set months
+// Set months array
 const monthArray = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 // Set Month Name
@@ -56,40 +56,18 @@ const dynamicYear = fullDinamicDate.getFullYear()
 // Dynamic Day
 let dayName
 const dynamicDay = fullDinamicDate.getDay()
-sayDayName()
 
-function sayDayName() {
-    if(dynamicDay === 1) {
-        dayName = "Monday"
-    }
 
-    if(dynamicDay === 2) {
-        dayName = "Tuesday"
-    }
+// Set months
+const dayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-    if(dynamicDay === 3) {
-        dayName = "Wednesday"
-    }
-
-    if(dynamicDay === 4) {
-        dayName = "Thursday"
-    }
-    
-    if(dynamicDay === 5) {
-        dayName = "Friday"
-    }
-    
-    if(dynamicDay === 6) {
-        dayName = "Saturday"
-    }
-
-    if(dynamicDay === 7) {
-        dayName = "Sunday"
+for(i=0; i < dayArray.length; i++) {
+    if(i === dynamicDay) {
+        dayName = dayArray[i - 1]
     }
 }
 
-// Dynamic Hour
-const dynamicHour = fullDinamicDate.getHours()
+
 
 // Dynamic Minutes 
 let mainMinutes;
@@ -133,11 +111,41 @@ function startCounter() {
   });
 
 
+  // is the time am or pm
+
+  const amPmDom = document.querySelector('.am-or-pm')
+
+  const localHourAmPm = fullDinamicDate.toLocaleString("en-US", {
+    hour: "numeric",
+    hour12: true,
+   });
+   
+   let amOrPm
+   
+   if(localHourAmPm.length > 4) {
+      amOrPm = localHourAmPm.slice(3, 5) 
+   } else {
+      amOrPm = localHourAmPm.slice(2, 4)
+   }
+
+
+   // Dynamic Hour
+
+   const localHour = localHourAmPm.slice(0, 2).padStart(3, '0')
+
+
+
 // Giving Dynamic Data into DOM
 dateElm.textContent = mainDate
 monthElm.textContent = monthName
 yearElm.textContent = dynamicYear
 dayElm.textContent = dayName
-hourElm.textContent = dynamicHour
+hourElm.textContent = localHour
 minutesElm.textContent = mainMinutes
+amPmDom.textContent = amOrPm
+
+
+
+
+const d = new Date();
 

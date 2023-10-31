@@ -10,6 +10,11 @@ body {
     font-family: tahoma;
 }
 
+@font-face {
+	font-family: clockFont;
+	src: url(digital-7.regular.ttf);
+}
+
 .clock-body {
 	background: #424242;
 	width: 350px;
@@ -59,37 +64,44 @@ body {
 }
 
 .main-time {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 52%;
+    left: 55%;
+    transform: translate(-50%, -50%);
 }
 .only-time {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: clockFont;
+    letter-spacing: 3px;
 }
 
 .main-time h2 {
     color: #00dbff;
     font-size: 52px;
+	width: 40px;
 }
-.main-time h5 {
-    font-size: 22px;
-    margin-top: 25px;
-    margin-left: 11px;
+
+
+.main-time .scounds {
+    font-size: 27px;
+    margin-top: 35px;
+    margin-left: 29px;
     color: lightgreen;
+    width: 25px;
+    letter-spacing: 4px;
 }
 
 .main-time span {
-	width: 10px;
-	height: 10px;
-	background: tomato;
-	border-radius: 10px;
-	margin: 14px 15px 9px 15px;
+    width: 9px;
+    height: 9px;
+    background: tomato;
+    border-radius: 3px;
+    margin: 14px 15px 9px 15px;
     display: block;
     animation: dots 1s infinite;
 }
@@ -108,9 +120,13 @@ body {
 }
 
 .pm-am h3 {
-    margin-top: 15px;
     color: tomato;
-    font-size: 31px;
+    font-size: 17px;
     margin-left: 19px;
     font-weight: 500;
+    font-family: tahoma;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 13px;
+    left: -57px;
 }
